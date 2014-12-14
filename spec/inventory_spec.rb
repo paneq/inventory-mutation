@@ -63,7 +63,7 @@ RSpec.describe Inventory do
     inventory.change_quantity("WROCLOVE2014", 5)
     expect do
       inventory.change_quantity("WROCLOVE2014", 4)
-    end.to raise_error(StandardError)
+    end.to raise_error(Inventory::Error)
   end
 
   specify "can't reserve if not enough product" do

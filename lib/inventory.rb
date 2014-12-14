@@ -1,6 +1,8 @@
 require "active_support/all"
 
 class Inventory
+  Error = Class.new(StandardError)
+
   def initialize
     @available_quantity = Hash.new{|hash, key| hash[key] = [0] }
     @reserved_quantity  = Hash.new{|hash, key| hash[key] = [0] }
@@ -16,7 +18,7 @@ class Inventory
   end
 
   def change_quantity(identifier, qty)
-    raise StandardError, "quantity too low" if qty - @reserved_quantity[identifier].sum - @sold_quantity[identifier].sum < 0
+    raise Error, "quantity too low" if qty - @reserved_quantity[identifier].sum - @sold_quantity[identifier].sum < 0
     @available_quantity[identifier] << -@available_quantity[identifier].last
     @available_quantity[identifier] << qty
   end
