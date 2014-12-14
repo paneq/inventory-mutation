@@ -4,9 +4,9 @@ class Inventory
   Error = Class.new(StandardError)
 
   def initialize
-    @available_quantity = Hash.new{|hash, key| hash[key] = [0] }
-    @reserved_quantity  = Hash.new{|hash, key| hash[key] = [0] }
-    @sold_quantity      = Hash.new{|hash, key| hash[key] = [0] }
+    @available_quantity = Hash.new{|hash, key| hash[key] = [] }
+    @reserved_quantity  = Hash.new{|hash, key| hash[key] = [] }
+    @sold_quantity      = Hash.new{|hash, key| hash[key] = [] }
   end
 
   def register_product(identifier, available_quantity)
