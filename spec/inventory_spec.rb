@@ -141,6 +141,8 @@ RSpec.describe Inventory do
     expect do
       inventory.refund_product("WROCLOVE2014", 2)
     end.to raise_error(StandardError)
+
+    inventory.refund_product("WROCLOVE2014", 1)
   end
 
   specify "multi product setup" do
